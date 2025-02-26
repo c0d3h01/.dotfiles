@@ -3,7 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;  # Fixed from enableAutosuggestions to autosuggestion.enable
+    };
     enableCompletion = true;
     autocd = true;
     dotDir = ".config/zsh";
@@ -28,6 +30,13 @@
       ls = "ls --color=auto";
       ll = "ls -la";
       la = "ls -a";
+      
+      # Replace exa with eza in case you had exa aliases
+      # Modern ls replacement
+      lx = "eza --icons --group-directories-first";
+      lxa = "eza -a --icons --group-directories-first";
+      lxl = "eza -l --icons --group-directories-first";
+      lxla = "eza -la --icons --group-directories-first";
       
       # Git aliases
       g = "git";
