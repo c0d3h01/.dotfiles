@@ -4,8 +4,8 @@
   programs.git = {
     enable = true;
     userName = "c0d3h01";
-    userEmail = "your-email@example.com"; # Change this to your email
-    
+    userEmail = "c0d3h01@gmail.com";
+
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = false; # Merge strategy

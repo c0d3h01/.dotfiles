@@ -4,7 +4,7 @@
   programs.zsh = {
     enable = true;
     autosuggestion = {
-      enable = true;  # Fixed from enableAutosuggestions to autosuggestion.enable
+      enable = true;
     };
     enableCompletion = true;
     autocd = true;
