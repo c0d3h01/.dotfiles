@@ -8,6 +8,7 @@
 
     extraConfig = {
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
       pull.rebase = false; # Merge strategy
       color.ui = true;
       

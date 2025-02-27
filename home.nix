@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib ? pkgs.lib, ... }:
 
 {
   imports = [
@@ -16,27 +16,36 @@
   # compatible with.
   home.stateVersion = "24.11";
 
+  nixpkgs.config.allowUnfree = true;
+
   # Enable fontconfig for custom fonts
   fonts.fontconfig.enable = true;
 
   # The home.packages option allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
-    # Development tools
-    git
-    curl
-    wget
-    tree
-    ripgrep
-    fd
-    jq
-    direnv
-
     # Terminal utilities
     htop
+    xclip
     bat
     eza
+    fd
+    ripgrep
+    zoxide
+    starship
+    nix-zsh-completions
     fzf
     tmux
+    fastfetch
+    inxi
+    nettools
+    glances
+    shc
+    direnv
+
+    git
+    git-lfs
+    gh
+    gitui
 
     # Individual nerd fonts (correct way to install them)
     nerd-fonts.jetbrains-mono
@@ -55,9 +64,6 @@
     TERMINAL = "kitty";
     BROWSER = "firefox";
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   # Configure Kitty terminal
   programs.kitty = {
@@ -123,4 +129,7 @@
       "ctrl+shift+home" = "restore_font_size";
     };
   };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }
