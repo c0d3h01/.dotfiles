@@ -114,15 +114,6 @@
         };
       }
       {
-        name = "fzf-tab";
-        src = pkgs.fetchFromGitHub {
-          owner = "Aloxaf";
-          repo = "fzf-tab";
-          rev = "v1.1.1";
-          sha256 = "1h1f0kkh8f8p4kkpis9fk05qwb6cxpj23x839df0aqgbp616sbmg";
-        };
-      }
-      {
         name = "fast-syntax-highlighting";
         src = pkgs.fetchFromGitHub {
           owner = "zdharma-continuum";
@@ -345,7 +336,4 @@
     ZSH_HIGHLIGHT_STYLES[assign]=fg=$teal
     EOF
   '';
-    #  git_branch = {
-    #    symbol = "🌱 ";
-    #  };
 }

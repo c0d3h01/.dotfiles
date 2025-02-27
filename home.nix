@@ -77,8 +77,10 @@
       
       # Window settings
       window_padding_width = 4;
-      hide_window_decorations = "no";
+      hide_window_decorations = "yes";
       confirm_os_window_close = 0;
+      remember_window_size = "yes";
+      macos_titlebar_color = "background";
       
       # Color scheme - One Dark
       foreground = "#abb2bf";

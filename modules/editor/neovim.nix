@@ -68,7 +68,7 @@
       vim.o.completeopt = 'menuone,noselect'
       
       -- Setup LSP and completion
-      require('lspconfig').tsserver.setup{}
+      require('lspconfig').ts_ls.setup{}
       require('lspconfig').rust_analyzer.setup{}
       require('lspconfig').nil_ls.setup{}
       
