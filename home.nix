@@ -41,7 +41,6 @@
     glances
     shc
     direnv
-
     git
     git-lfs
     gh

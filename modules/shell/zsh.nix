@@ -58,21 +58,17 @@
       x = "exit";
       
       # NixOS Aliases
-      nrs = "sudo nixos-rebuild switch";
-      nrb = "sudo nixos-rebuild boot";
-      nrt = "sudo nixos-rebuild test";
-      hs = "home-manager switch";
-      hmb = "home-manager build";
-      nsearch = "nix search nixpkgs";
-      nrun = "nix-shell -p";
-      neconf = "sudo $EDITOR /etc/nixos/configuration.nix";
-      nhconf = "$EDITOR ~/.config/nixpkgs/home.nix";
-      nconf = "nix show-config";
-      nrebuild = "sudo nixos-rebuild switch --upgrade";
-      nclean = "sudo nix-collect-garbage -d";
-      ncleanall = "sudo nix-store --gc && sudo nix-collect-garbage -d";
-      nstore-opt = "sudo nix-store --optimise";
-      ninfo = "nix-shell -p nix-info --run \"nix-info -m\"";
+      nix-build = "sudo nixos-rebuild switch --upgrade";
+      home-build = "home-manager switch --flake .";
+      nix-se = "nix search nixpkgs";
+      nix-run = "nix-shell -p";
+      nix-econf = "sudo $EDITOR /etc/nixos/configuration.nix";
+      home-econf = "$EDITOR ~/.config/nixpkgs/home.nix";
+      nix-conf = "nix show-config";
+      nix-clean = "sudo nix-collect-garbage -d";
+      nix-cleanall = "sudo nix-store --gc && sudo nix-collect-garbage -d";
+      nix-storeopt = "sudo nix-store --optimise";
+      nix-i = "nix-shell -p nix-info --run \"nix-info -m\"";
       
       # System
       sysinfo = "fastfetch";
