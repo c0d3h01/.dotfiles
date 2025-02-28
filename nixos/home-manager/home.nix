@@ -4,16 +4,12 @@
   imports = [
     # -*- Modules -*-
     ./modules/git
-    #./modules/kitty
+    ./modules/shell
     ./modules/editor
-    #./modules/firefox
+    ./modules/kitty
+    ./modules/firefox
+    #./modules/notion-app-enhanced
   ];
-
-  nixpkgs.config.packageOverrides = pkgs: {
-  nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-    inherit pkgs;
-  };
-};
 
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "c0d3h01";
@@ -22,9 +18,6 @@
   # This value determines the Home Manager release that your configuration is
   # compatible with.
   home.stateVersion = "24.11";
-
-  # Config for nixpkgs.
-  nixpkgs.config.allowUnfree = true;
 
   # Enable fontconfig for custom fonts
   fonts.fontconfig.enable = true;
@@ -73,5 +66,5 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  #programs.home-manager.enable = true;
 }

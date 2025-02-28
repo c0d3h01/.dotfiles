@@ -25,6 +25,7 @@
           # Specify your home configuration modules here
           modules = [
             ./home.nix
+            ./modules/default.nix
           ];
           
           # Pass arguments to the modules
