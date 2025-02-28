@@ -15,6 +15,10 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Gnome boxes settings.
+  virtualisation.libvirtd.enable = true;
+  users.extraGroups.libvirtd.members = [ "c0d3h01" ];
+
   # -*- Gnome exclude apps -*-
   environment.gnome.excludePackages = with pkgs.gnome; [
     pkgs.gnome-weather
@@ -95,7 +99,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -122,83 +126,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # -*- Desktop -*-
-    vscode
-    zoom-us
-    slack
-    anydesk
-    github-desktop
-    jetbrains.pycharm-community-bin
-    jetbrains.webstorm
-    universal-android-debloater
-    postman
-    tor-browser
-    vesktop
-    telegram-desktop
-    github-desktop
-    vscode
-    wine
-    slack
-    zoom-us
-    anydesk
-    libreoffice
-    hunspell
-    hunspellDicts.en_US
-    ventoy
-    element-desktop
-    rhythmbox 
-    tor-browser
-    youtube-music
-    transmission_4-gtk
-    appimage-run
-    podman
-    podman-compose
-    podman-desktop
-    notion-app-enhanced
-
-    # -*- Development tools -*-
-    curl
-    wget
-    tree
-    ripgrep
-    direnv
-    nodejs_23
-    zulu23 # java
-    postman
-    parallel-full # sql
-    ruby_3_4
-    jupyter-all
-    rustup
-    android-tools
-    universal-android-debloater # uad-ng
-    metasploit # msfconsole 
-    libgcc
-    gdb
-    clang
-    cmake
-    python312Packages.ninja
-    python312Packages.pip
-    python312Packages.virtualenv
-    python312Packages.django
-    python312Packages.flask
-    python312Packages.fastapi
-    python312Packages.jinja2
-
-    # -*- Misc Packages -*-
-    gnomeExtensions.gsconnect
-    micro-full # text editor.
-    gnome-tweaks
-    gnome-boxes
-    yaru-theme
-  ];
-
-  # Gnome boxes settings.
-  virtualisation.libvirtd.enable = true;
-  users.extraGroups.libvirtd.members = [ "c0d3h01" ];
 
   environment.sessionVariables = {
   NIXOS_XDG_OPEN_USE_PORTAL = "1";
