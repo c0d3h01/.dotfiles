@@ -7,7 +7,6 @@
     ./modules/shell
     ./modules/editor
     ./modules/kitty
-    ./modules/firefox
     #./modules/notion-app-enhanced
   ];
 
@@ -123,7 +122,7 @@
     gh
     gitui
 
-    # Individual nerd fonts (correct way to install them)
+    # Individual nerd fonts (coapple-color-emoji.nixrrect way to install them)
     nerd-fonts.jetbrains-mono
     fira-code
   ];

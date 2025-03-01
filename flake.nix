@@ -5,7 +5,7 @@
     # Package sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    
+
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -39,6 +39,7 @@
       };
       overlays = [
         nur.overlay
+        (import ./overlays)
         (final: prev: {
           # Package overrides can be added here
           stable = import nixpkgs-stable {

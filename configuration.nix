@@ -6,16 +6,17 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
 
   # -*- Allow unfree softwares -*-
   nixpkgs.config.allowUnfree = true;
 
+  # -*- Allow Nix experimental-features enable -*-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Gnome boxes settings.
+  # -*- Gnome boxes settings -*-
   virtualisation.libvirtd.enable = true;
   users.extraGroups.libvirtd.members = [ "c0d3h01" ];
 
@@ -47,14 +48,14 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  networking.networkmanager.settings = {
-  connection = {
-    "wifi.powersave" = 2;
+  networking.networkmanager = {
+    enable = true;
+    settings = {
+      connection = {
+      "wifi.powersave" = 2;
+      };
+    };
   };
-};
-
-  # Enable networking.
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -98,8 +99,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
+    jack.enable = true; # If you want to use JACK applications, uncomment this
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -109,7 +109,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   #services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # -*- Define a user account -*-
   users.users.c0d3h01 = {
     isNormalUser = true;
     home = "/home/c0d3h01";
@@ -117,14 +117,25 @@
     description = "c0d3h01";
     extraGroups = [ "networkmanager" "wheel" "docker" "audio" "video" "plugdev" ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBe8fHUXMQJmuER2hFkeGAImJ40boFsXAfAgZslKeV4H c0d3h01@gmail.com" ];
-    packages = with pkgs; [
-    ];
+    #packages = with pkgs; [
+    #];
   };
 
-  # Enabled Zshell
+  # -*- Package installed as system level -*-
+  environment.systemPackages = with pkgs; [
+    eww
+  ];
+
+  # -*- Automatic cleanup -*-
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  #nix.gc.options = "--delete-older-than 1d";
+  nix.settings.auto-optimise-store = true;
+
+  # -*- Enabled Zshell -*-
   programs.zsh.enable = true;
 
-  # Install firefox.
+  # -*- Install firefox -*-
   programs.firefox.enable = true;
 
   environment.sessionVariables = {
@@ -152,9 +163,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11";
-
-  fileSystems."/home/c0d3h01/Desktop/hdd" =
-  { device = "/dev/disk/by-uuid/e478fdb0-5dd7-463e-b579-7c1b75ccb9cf";
-    fsType = "ext4";
-  };
 }
