@@ -7,7 +7,7 @@
     enableCompletion = true;
     autocd = true;
     dotDir = ".config/zsh";
-    
+
     # Shell history settings
     history = {
       expireDuplicatesFirst = true;
@@ -51,27 +51,24 @@
       v = "nvim";
       vi = "nvim";
       vim = "nvim";
-      
+  
       # Additional Aliases
       ff = "fastfetch";
       cl = "clear";
       x = "exit";
-      
+  
       # NixOS Aliases
-      nix-build = "sudo nixos-rebuild switch --upgrade";
-      home-build = "home-manager switch --flake .";
+      nix-build = "sudo nixos-rebuild switch --flake ~/dotfiles/. --upgrade";
       nix-se = "nix search nixpkgs";
       nix-run = "nix-shell -p";
       nix-econf = "sudo $EDITOR /etc/nixos/configuration.nix";
-      home-econf = "$EDITOR ~/.config/nixpkgs/home.nix";
       nix-conf = "nix show-config";
       nix-clean = "sudo nix-collect-garbage -d";
       nix-cleanall = "sudo nix-store --gc && sudo nix-collect-garbage -d";
       nix-storeopt = "sudo nix-store --optimise";
       nix-i = "nix-shell -p nix-info --run \"nix-info -m\"";
-      
+  
       # System
-      sysinfo = "fastfetch";
       df = "df -h";
       du = "du -h";
       free = "free -h";

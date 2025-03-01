@@ -20,29 +20,14 @@
   virtualisation.libvirtd.enable = true;
   users.extraGroups.libvirtd.members = [ "c0d3h01" ];
 
-  # -*- Gnome exclude apps -*-
-  environment.gnome.excludePackages = with pkgs.gnome; [
-    pkgs.gnome-weather
-    pkgs.gnome-contacts
-    pkgs.gnome-music
-    pkgs.yelp
-    pkgs.epiphany
-    pkgs.baobab
-    pkgs.gnome-tour
-    pkgs.gnome-system-monitor
-    pkgs.gnome-characters
-    pkgs.gnome-connections
-    pkgs.gnome-font-viewer
-    pkgs.geary
-    pkgs.gnome-text-editor
-  ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "NixOS";
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Enables wireless support via wpa_supplicant
+  #networking.wireless.enable = true;
 
   # -*- Configure network proxy if necessary -*-
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -81,6 +66,23 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  # -*- Gnome "Exclude!" apps -*-
+  environment.gnome.excludePackages = with pkgs.gnome; [
+    pkgs.gnome-weather
+    pkgs.gnome-contacts
+    pkgs.gnome-music
+    pkgs.yelp
+    pkgs.epiphany
+    pkgs.baobab
+    pkgs.gnome-tour
+    pkgs.gnome-system-monitor
+    pkgs.gnome-characters
+    pkgs.gnome-connections
+    pkgs.gnome-font-viewer
+    pkgs.geary
+    pkgs.gnome-text-editor
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -166,8 +168,6 @@
     android-tools
     universal-android-debloater # uad-ng
     metasploit # msfconsole 
-    libgcc
-    gdb
     clang
     cmake
     python312Packages.ninja
