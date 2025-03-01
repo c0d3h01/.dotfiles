@@ -20,9 +20,13 @@
     
     # Systems definitions
     systems.url = "github:nix-systems/default";
+    
+    # Snap packages
+    nix-snapd.url = "github:nix-community/nix-snapd";
+    nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
   };
   
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, nur, systems, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, nix-snapd, home-manager, nixos-hardware, nur, systems, ... }:
   let
     # Helper function to generate system configurations for each supported system
     forEachSystem = nixpkgs.lib.genAttrs (import systems);
@@ -39,7 +43,6 @@
       };
       overlays = [
         nur.overlay
-        (import ./overlays)
         (final: prev: {
           # Package overrides can be added here
           stable = import nixpkgs-stable {
@@ -65,6 +68,11 @@
           # Host-specific configuration
           ./configuration.nix
           ./hardware-configuration.nix
+
+          nix-snapd.nixosModules.default
+        {
+          services.snap.enable = true;
+        }
           
           # Home Manager configuration
           home-manager.nixosModules.home-manager {

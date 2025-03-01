@@ -117,20 +117,108 @@
     description = "c0d3h01";
     extraGroups = [ "networkmanager" "wheel" "docker" "audio" "video" "plugdev" ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBe8fHUXMQJmuER2hFkeGAImJ40boFsXAfAgZslKeV4H c0d3h01@gmail.com" ];
-    #packages = with pkgs; [
-    #];
-  };
 
-  # -*- Package installed as system level -*-
-  environment.systemPackages = with pkgs; [
-    eww
-  ];
+    packages = with pkgs; [
+    # -*- Desktop -*-
+    vscode
+    zoom-us
+    slack
+    anydesk
+    github-desktop
+    jetbrains.pycharm-community-bin
+    jetbrains.webstorm
+    universal-android-debloater
+    postman
+    vesktop
+    telegram-desktop
+    github-desktop
+    vscode
+    wine
+    slack
+    zoom-us
+    anydesk
+    libreoffice
+    hunspell
+    hunspellDicts.en_US
+    ventoy
+    element-desktop
+    rhythmbox 
+    tor-browser
+    youtube-music
+    transmission_4-gtk
+    appimage-run
+    docker
+    docker-compose
+
+    # -*- Development tools -*-
+    curl
+    wget
+    tree
+    ripgrep
+    direnv
+    nodejs_23
+    zulu23 # java
+    postman
+    parallel-full # sql
+    ruby_3_4
+    jupyter-all
+    rustup
+    android-tools
+    universal-android-debloater # uad-ng
+    metasploit # msfconsole 
+    libgcc
+    gdb
+    clang
+    cmake
+    python312Packages.ninja
+    python312Packages.pip
+    python312Packages.virtualenv
+    python312Packages.django
+    python312Packages.flask
+    python312Packages.fastapi
+    python312Packages.jinja2
+
+    # -*- Misc Packages -*-
+    gnomeExtensions.gsconnect
+    micro-full # text editor.
+    gnome-tweaks
+    gnome-boxes
+
+    # Terminal utilities
+    xclip
+    bat
+    eza
+    fd
+    ripgrep
+    zoxide
+    starship
+    nix-zsh-completions
+    fzf
+    tmux
+    fastfetch
+    inxi
+    nettools
+    glances
+    shc
+    direnv
+    git
+    git-lfs
+    gh
+    gitui
+
+    # Individual nerd fonts (coapple-color-emoji.nixrrect way to install them)
+    nerd-fonts.jetbrains-mono
+    fira-code
+    ];
+  };
 
   # -*- Automatic cleanup -*-
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
   #nix.gc.options = "--delete-older-than 1d";
   nix.settings.auto-optimise-store = true;
+
+  programs.nix-ld.enable = true;
 
   # -*- Enabled Zshell -*-
   programs.zsh.enable = true;
