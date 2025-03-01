@@ -13,7 +13,10 @@
       # Window settings
       window_padding_width = 4;
       hide_window_decorations = "yes";
-      confirm_os_window_close = 0;
+      confirm_os_window_close = 1;
+      enable_audio_bell = true;
+      background_opacity = "0.8";
+      background_blur = 7;
       remember_window_size = "yes";
       macos_titlebar_color = "background";
       
