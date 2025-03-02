@@ -3,7 +3,7 @@
   imports = [
     ./xdg.nix
   ];
-  
+
   # Core configuration shared across all home-manager setups
   home.sessionVariables = {
     EDITOR = "nvim";
