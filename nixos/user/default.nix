@@ -4,6 +4,7 @@
     ./nixpkgs.nix
     ./sound.nix
     ./nixopt.nix
+    ./fonts.nix
   ];
 }
 
