@@ -1,10 +1,10 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-  ./config/git
-  ./config/kitty
-  ./config/shell
-  ./config/neovim
+    ./config/git
+    ./config/kitty
+    ./config/shell
+    ./config/neovim
   ];
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "c0d3h01";

@@ -21,7 +21,7 @@
     description = "c0d3h01";
     extraGroups = [ "networkmanager" "wheel" "docker" "audio" "video" "plugdev" ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBe8fHUXMQJmuER2hFkeGAImJ40boFsXAfAgZslKeV4H c0d3h01@gmail.com" ];
-    };
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_IN";
