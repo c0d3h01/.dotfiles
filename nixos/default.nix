@@ -1,6 +1,9 @@
 {
   imports = [
-    ./configuration.nix
-    ./hardware-configuration.nix
+    ./user
+    ./hardware
+    ./networking
+    ./gnome
+    ./modules
   ];
 }

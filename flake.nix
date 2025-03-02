@@ -65,9 +65,8 @@
         NixOS = lib.nixosSystem {
           inherit system specialArgs;
           modules = [
-            # Host-specific configuration
+            # Host, user, modules configurations
             ./nixos
-            ./home-manager/modules/languages
 
             nix-snapd.nixosModules.default
             {
@@ -81,7 +80,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = specialArgs;
-                users.c0d3h01 = import ./home-manager/home.nix;
+                users.c0d3h01 = import ./home/home.nix;
               };
             }
           ];
