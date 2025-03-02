@@ -11,6 +11,12 @@
   virtualisation.libvirtd.enable = true;
   users.extraGroups.libvirtd.members = [ "c0d3h01" ];
 
+  # -*- Gsconnect gnome shell extension -*-
+  programs.kdeconnect = {
+  enable = true;
+  package = pkgs.gnomeExtensions.gsconnect;
+};
+
   # Enables nix-ld to run dynamically linked binaries outside the Nix store
   programs.nix-ld.enable = true;
 
@@ -74,7 +80,6 @@
     python312Packages.jinja2
 
     # -*- Misc Packages -*-
-    gnomeExtensions.gsconnect
     micro-full # text editor.
     gnome-tweaks
     gnome-boxes

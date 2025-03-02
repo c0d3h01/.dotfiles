@@ -15,7 +15,7 @@
       hide_window_decorations = "yes";
       confirm_os_window_close = 1;
       enable_audio_bell = true;
-      background_opacity = "0.8";
+      background_opacity = "0.9";
       background_blur = 7;
       remember_window_size = "yes";
       macos_titlebar_color = "background";
