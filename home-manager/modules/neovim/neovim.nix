@@ -5,7 +5,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    
+
     # Install plugins
     plugins = with pkgs.vimPlugins; [
       vim-sensible
@@ -23,7 +23,7 @@
       cmp-path
       onedark-nvim
     ];
-    
+
     # Extra packages to make available to neovim
     extraPackages = with pkgs; [
       nodePackages.typescript-language-server

@@ -9,7 +9,7 @@
       italic_font = "JetBrainsMono Nerd Font Italic";
       bold_italic_font = "JetBrainsMono Nerd Font Bold Italic";
       font_size = 12;
-      
+
       # Window settings
       window_padding_width = 4;
       hide_window_decorations = "yes";
@@ -19,14 +19,14 @@
       background_blur = 7;
       remember_window_size = "yes";
       macos_titlebar_color = "background";
-      
+
       # Color scheme - One Dark
       foreground = "#abb2bf";
       background = "#282c34";
       selection_foreground = "#282c34";
       selection_background = "#979eab";
       cursor = "#cccccc";
-      
+
       # Black
       color0 = "#282c34";
       color8 = "#545862";
@@ -51,7 +51,7 @@
       # White
       color7 = "#abb2bf";
       color15 = "#c8ccd4";
-      
+
       # Tab bar
       tab_bar_edge = "bottom";
       tab_bar_style = "powerline";
@@ -60,7 +60,7 @@
       inactive_tab_foreground = "#abb2bf";
       inactive_tab_background = "#353b45";
     };
-    
+
     keybindings = {
       "ctrl+shift+c" = "copy_to_clipboard";
       "ctrl+shift+v" = "paste_from_clipboard";
@@ -68,6 +68,6 @@
       "ctrl+shift+down" = "decrease_font_size";
       "ctrl+shift+home" = "restore_font_size";
     };
-   };
+  };
 }
 

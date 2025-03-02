@@ -15,28 +15,28 @@
       save = 15000;
       size = 15000;
       path = "${config.xdg.dataHome}/zsh/history";
-      share = true; 
+      share = true;
     };
-    
+
     # Shell aliases
     shellAliases = {
       # Navigation
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
-      
+
       # Command aliases
       ls = "ls --color=auto";
       ll = "ls -la";
       la = "ls -a";
-      
+
       # Modern ls replacement with eza
       lx = "eza --icons --group-directories-first";
       lxa = "eza -a --icons --group-directories-first";
       lxl = "eza -l --icons --group-directories-first";
       lxla = "eza -la --icons --group-directories-first";
       lxt = "eza --tree --level=2 --icons";
-      
+
       # Git aliases
       g = "git";
       ga = "git add";
@@ -46,17 +46,17 @@
       gl = "git log --oneline";
       gd = "git diff";
       gco = "git checkout";
-      
+
       # Neovim
       v = "nvim";
       vi = "nvim";
       vim = "nvim";
-  
+
       # Additional Aliases
       ff = "fastfetch";
       cl = "clear";
       x = "exit";
-  
+
       # NixOS Aliases
       nix-build = "sudo nixos-rebuild switch --flake ~/dotfiles/. --upgrade";
       nix-se = "nix search nixpkgs";
@@ -67,7 +67,7 @@
       nix-cleanall = "sudo nix-store --gc && sudo nix-collect-garbage -d";
       nix-storeopt = "sudo nix-store --optimise";
       nix-i = "nix-shell -p nix-info --run \"nix-info -m\"";
-  
+
       # System
       df = "df -h";
       du = "du -h";
@@ -75,7 +75,7 @@
       mkdir = "mkdir -pv";
       path = "echo -e ${builtins.concatStringsSep "\\n" config.home.sessionPath}";
     };
-    
+
     # ZSH plugins
     plugins = [
       {
@@ -125,7 +125,7 @@
         };
       }
     ];
-    
+
     # Environment variables
     envExtra = ''
       export EDITOR="nvim"
@@ -135,7 +135,7 @@
       export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --color=always {}'"
       export BAT_THEME="Catppuccin-mocha"
     '';
-    
+
     # Additional options
     initExtra = ''
       # Set prompt
@@ -205,7 +205,7 @@
       }
     '';
   };
-  
+
   # Enable Starship prompt with improved styling
   programs.starship = {
     enable = true;
@@ -269,9 +269,9 @@
       };
     };
   };
-  
+
   # Create ZSH theme directory
-  home.file.".config/zsh/themes".source = pkgs.runCommand "zsh-themes" {} ''
+  home.file.".config/zsh/themes".source = pkgs.runCommand "zsh-themes" { } ''
     mkdir -p $out
     cat > $out/catppuccin-mocha.zsh-theme << EOF
     # Catppuccin Mocha ZSH Theme
