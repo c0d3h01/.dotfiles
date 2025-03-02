@@ -121,6 +121,7 @@
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBe8fHUXMQJmuER2hFkeGAImJ40boFsXAfAgZslKeV4H c0d3h01@gmail.com" ];
 
     packages = with pkgs; [
+    hello
     # -*- Desktop -*-
     vscode
     zoom-us
