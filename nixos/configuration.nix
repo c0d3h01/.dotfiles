@@ -158,7 +158,6 @@
       wget
       tree
       ripgrep
-      direnv
       nodejs_23
       zulu23 # java
       postman
@@ -170,6 +169,7 @@
       universal-android-debloater # uad-ng
       metasploit # msfconsole 
       clang
+      gnumake
       cmake
       python312Packages.ninja
       python312Packages.pip

@@ -66,8 +66,8 @@
           inherit system specialArgs;
           modules = [
             # Host-specific configuration
-            ./nixos/configuration.nix
-            ./nixos/hardware-configuration.nix
+            ./nixos
+            ./home-manager/modules/languages
 
             nix-snapd.nixosModules.default
             {

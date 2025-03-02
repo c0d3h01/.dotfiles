@@ -8,35 +8,33 @@
     ./modules/shell
     ./modules/neovim
     ./modules/kitty
-    ./modules/languages
-    ./modules/tools
   ];
 
-  # Home Manager basics
-  home = {
-    username = "c0d3h01";
-    homeDirectory = "/home/c0d3h01";
-    stateVersion = "24.11";
+  # Home Manager needs a bit of information about you and the paths it should manage.
+  home.username = "c0d3h01";
+  home.homeDirectory = "/home/c0d3h01";
 
-    # ".config/some-app/config".source = ./config/some-app/config;
-    file = { };
+  # This value determines the Home Manager release that your configuration is
+  # compatible with.
+  home.stateVersion = "24.11";
 
-    # Basic packages available to user
-    #   packages = with pkgs; [
-    #   ];
-    # };
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
-    # Let Home Manager install and manage itself
-    programs.home-manager.enable = true;
+  # Enable fontconfig for custom fonts
+  fonts.fontconfig.enable = true;
 
-    # Enable fontconfig for custom fonts
-    fonts.fontconfig.enable = true;
+  # ".config/some-app/config".source = ./config/some-app/config;
+  home.file = { };
 
-    # Create XDG directories
-    xdg = {
-      enable = true;
-      userDirs.enable = true;
-      userDirs.createDirectories = true;
-    };
+  # Basic packages available to user
+  # packages = with pkgs; [
+  # ];
+
+  # Create XDG directories
+  xdg = {
+    enable = true;
+    userDirs.enable = true;
+    userDirs.createDirectories = true;
   };
 }

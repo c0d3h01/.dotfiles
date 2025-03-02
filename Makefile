@@ -12,7 +12,7 @@ build:
 
 # Test configuration in a temporary environment
 test:
-	nixos-rebuild test --flake ~/dotfiles/.
+	nixos-rebuild test --flake ~/dotfiles/. --show-trace
 
 # Update flake inputs
 update:

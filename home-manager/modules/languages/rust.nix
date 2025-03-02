@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
+let
+  userHome = config.users.users.c0d3h01.home;
+in
 {
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     rustup
     rust-analyzer
     cargo-edit
@@ -11,22 +14,27 @@
     cargo-flamegraph
   ];
 
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
-    rust-lang.rust-analyzer
-    vadimcn.vscode-lldb
-    serayuzgur.crates
-  ];
-
   # Set up environment for Rust
-  home.sessionVariables = {
-    RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
-    CARGO_HOME = "${config.home.homeDirectory}/.cargo";
-    PATH = "$PATH:${config.home.homeDirectory}/.cargo/bin";
+  environment.sessionVariables = {
+    RUSTUP_HOME = "${userHome}/.rustup";
+    CARGO_HOME = "${userHome}/.cargo";
+    PATH = "$PATH:${userHome}/.cargo/bin";
   };
 
   # Configure default toolchain in .config/rustup/settings.toml
-  home.file.".config/rustup/settings.toml".text = ''
-    default_toolchain = "stable"
-    profile = "default"
-  '';
+  systemd.tmpfiles.rules = [
+    "d ${userHome}/.config/rustup 0755 c0d3h01 users - -"
+    "f ${userHome}/.config/rustup/settings.toml 0644 c0d3h01 users - -"
+  ];
+
+  systemd.services.rustup-setup = {
+    script = ''
+      echo 'default_toolchain = "stable"' > ${userHome}/.config/rustup/settings.toml
+      echo 'profile = "default"' >> ${userHome}/.config/rustup/settings.toml
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "c0d3h01";
+    };
+  };
 }
