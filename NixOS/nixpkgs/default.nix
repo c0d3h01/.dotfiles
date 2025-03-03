@@ -46,14 +46,9 @@
 
     # -*- Development tools -*-
     nodejs_23 # v23
-    zulu23 # java
     postman
     parallel-full # sql
     ruby_3_4
-    jupyter-all
-    rustup
-    android-tools
-    universal-android-debloater # uad-ng
     metasploit # msfconsole 
     nmap
     clang
@@ -61,19 +56,11 @@
     cmake
     ninja
 
-    # Docker cconfigi
-    docker
-    docker-compose
-
-    # Python modules
-    python312Packages.pip
-    python312Packages.django
-    python312Packages.flask
-    python312Packages.fastapi
-    python312Packages.jinja2
-
     # -*- Terminal basic utilities -*-
+    android-tools
+    universal-android-debloater # uad-ng
     wine
+    tree
     ventoy
     curl
     wget
