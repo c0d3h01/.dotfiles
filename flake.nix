@@ -5,6 +5,7 @@
     # Package sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    flake-utils.url = "github:numtide/flake-utils";
 
     # Home Manager
     home-manager = {
@@ -14,24 +15,18 @@
 
     # Hardware configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-
-    flake-utils.url = "github:numtide/flake-utils";
+ 
+    # Systems definitions
+    systems.url = "github:nix-systems/default";
 
     # NUR (Nix User Repository)
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Systems definitions
-    systems.url = "github:nix-systems/default";
-
-    # Snap packages
-    nix-snapd.url = "github:nix-community/nix-snapd";
-    nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, nix-snapd, home-manager, nixos-hardware, nur, systems, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, nur, systems, ... }:
     let
       # Helper function to generate system configurations for each supported system
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
@@ -72,11 +67,6 @@
             # Host, user, modules configurations
             ./NixOS
 
-            nix-snapd.nixosModules.default
-            {
-              services.snap.enable = true;
-            }
-
             # Home Manager configuration
             home-manager.nixosModules.home-manager
             {
@@ -93,7 +83,7 @@
             # NUR modules to import
             nur.legacyPackages."${system}".repos.iopq.modules.xraya
             ({ pkgs, ... }: {
-              environment.systemPackages = [ pkgs.nur.repos.mic92.hello-nur ];
+              environment.systemPackages = [ ];
             })
           ];
         };
