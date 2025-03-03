@@ -13,6 +13,17 @@ in
       # Privacy about:config settings
       profiles.c0d3h01 = {
 
+        # Install extensions from NUR
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          decentraleyes
+          ublock-origin
+          clearurls
+          sponsorblock
+          darkreader
+          h264ify
+          df-youtube
+        ];
+
         settings = {
           "browser.send_pings" = false;
           "browser.urlbar.speculativeConnect.enabled" = false;
