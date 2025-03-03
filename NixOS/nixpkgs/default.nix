@@ -59,6 +59,7 @@
     clang
     gnumake
     cmake
+    ninja
 
     # Docker cconfigi
     docker
