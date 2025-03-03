@@ -37,6 +37,7 @@
     micro-full # text editor.
     gnome-tweaks
     gnome-boxes
+    gnomeExtensions.gsconnect # Gnome KDEConnect Extentsion
   ];
 }
 
