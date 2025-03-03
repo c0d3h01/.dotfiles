@@ -4,22 +4,17 @@
 }:
 
 {
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
+  # Configure firewall settings
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 1716 ];
+    allowedUDPPorts = [ 1716 ];
+  };
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # Enables wireless support via wpa_supplicant (uncomment if needed)
+  # networking.wireless.enable = true;
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 1716 ];
-  networking.firewall.allowedUDPPorts = [ 1716 ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
-
-  # Enables wireless support via wpa_supplicant
-  #networking.wireless.enable = true;
-
-  # -*- Configure network proxy if necessary -*-
+  # Configure network proxy if necessary (uncomment and modify if needed)
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 

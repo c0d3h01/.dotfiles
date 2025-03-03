@@ -15,8 +15,13 @@
     # Hardware configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    flake-utils.url = "github:numtide/flake-utils";
+
     # NUR (Nix User Repository)
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Systems definitions
     systems.url = "github:nix-systems/default";
@@ -42,7 +47,7 @@
           permittedInsecurePackages = [ ];
         };
         overlays = [
-          nur.overlay
+          nur.overlays.default
           (final: prev: {
             # Package overrides can be added here
             stable = import nixpkgs-stable {
@@ -65,6 +70,10 @@
         NixOS = lib.nixosSystem {
           inherit system specialArgs;
           modules = [
+            # Adds the NUR overlay
+            nur.modules.nixos.default
+            # NUR modules to import
+            nur.legacyPackages."${system}".repos.iopq.modules.xraya
             # Host, user, modules configurations
             ./NixOS
 

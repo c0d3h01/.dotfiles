@@ -5,6 +5,7 @@
     ./configs/kitty
     ./configs/shell
     ./configs/neovim
+    ./configs/firefox
   ];
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "c0d3h01";
@@ -25,7 +26,10 @@
 
   # Basic packages available to user
   home.packages = with pkgs; [
+    eww
   ];
+
+  modules.firefox.enable = true;
 
   # XDG Base Directory specification
   xdg = {

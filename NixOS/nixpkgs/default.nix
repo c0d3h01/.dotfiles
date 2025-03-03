@@ -93,6 +93,7 @@
     python312Packages.jinja2
 
     # -*- Terminal utilities -*-
+    eww
     xclip
     bat
     eza
