@@ -7,21 +7,26 @@
   # -*- Allow Nix experimental-features enable -*-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # -*- Automatic cleanup -*-
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 1d";
+  nix.settings.auto-optimise-store = true;
+
   # -*- Gnome boxes settings -*-
   virtualisation.libvirtd.enable = true;
   users.extraGroups.libvirtd.members = [ "c0d3h01" ];
 
   # -*- Gsconnect gnome shell extension -*-
   programs.kdeconnect = {
-  enable = true;
-  package = pkgs.gnomeExtensions.gsconnect;
-};
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
 
   # Enables nix-ld to run dynamically linked binaries outside the Nix store
   programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
-    hello
     # -*- Desktop -*-
     vscode
     zoom-us
@@ -79,11 +84,6 @@
     python312Packages.fastapi
     python312Packages.jinja2
 
-    # -*- Misc Packages -*-
-    micro-full # text editor.
-    gnome-tweaks
-    gnome-boxes
-
     # -*- Terminal utilities -*-
     xclip
     bat
@@ -105,9 +105,6 @@
     git-lfs
     gh
     gitui
-
-    # -*- Individual nerd fonts -*-
-    nerd-fonts.jetbrains-mono
-    fira-code
   ];
 }
+

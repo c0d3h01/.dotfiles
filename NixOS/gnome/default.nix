@@ -27,4 +27,16 @@
     pkgs.geary
     pkgs.gnome-text-editor
   ];
+
+  # Exclude xterm from packages it installed by default Xorg.
+  services.xserver.excludePackages = with pkgs; [
+    xterm
+  ];
+
+  environment.systemPackages = with pkgs; [
+    micro-full # text editor.
+    gnome-tweaks
+    gnome-boxes
+  ];
 }
+
