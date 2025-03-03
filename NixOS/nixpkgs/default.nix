@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+#pkgs: {
+#  notion-app-enhanced = pkgs.callPackage ./notion-app-enhanced { };
+#}
+
 {
   # -*- Allow unfree softwares -*-
   nixpkgs.config.allowUnfree = true;
@@ -21,6 +25,11 @@
   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
+  };
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
   };
 
   # Enables nix-ld to run dynamically linked binaries outside the Nix store
@@ -54,7 +63,6 @@
     tor-browser
     youtube-music
     transmission_4-gtk
-    appimage-run
     docker
     docker-compose
 
