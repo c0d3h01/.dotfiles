@@ -206,6 +206,13 @@
     '';
   };
 
+  # Enable direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   # Enable Starship prompt with improved styling
   programs.starship = {
     enable = true;
