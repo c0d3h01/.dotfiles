@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration with Home Manager";
+  description = "c0d3h01 dotfiles";
 
   inputs = {
     # Package sources
@@ -47,7 +47,6 @@
           permittedInsecurePackages = [ ];
         };
         overlays = [
-          nur.overlays.default
           (final: prev: {
             # Package overrides can be added here
             stable = import nixpkgs-stable {
@@ -70,10 +69,6 @@
         NixOS = lib.nixosSystem {
           inherit system specialArgs;
           modules = [
-            # Adds the NUR overlay
-            nur.modules.nixos.default
-            # NUR modules to import
-            nur.legacyPackages."${system}".repos.iopq.modules.xraya
             # Host, user, modules configurations
             ./NixOS
 
@@ -92,6 +87,14 @@
                 users.c0d3h01 = import ./home/home.nix;
               };
             }
+
+            # Adds the NUR overlay
+            nur.modules.nixos.default
+            # NUR modules to import
+            nur.legacyPackages."${system}".repos.iopq.modules.xraya
+            ({ pkgs, ... }: {
+              environment.systemPackages = [ pkgs.nur.repos.mic92.hello-nur ];
+            })
           ];
         };
       };
