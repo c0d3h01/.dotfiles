@@ -15,7 +15,7 @@
 
     # Hardware configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware";
- 
+
     # Systems definitions
     systems.url = "github:nix-systems/default";
 
