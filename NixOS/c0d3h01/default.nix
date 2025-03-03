@@ -4,16 +4,6 @@
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  system.stateVersion = "24.11";
-  networking.hostName = "NixOS";
-
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
-
   # -*- Define a user account -*-
   users.users.c0d3h01 = {
     isNormalUser = true;
@@ -23,29 +13,6 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "audio" "video" "plugdev" ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINcq9uTCVusCJRWgHTj8u4sdvvuXfPZcinAYTbNZW+eI c0d3h01@gmail.com" ];
   };
-
-  services = {
-    # Enable CUPS to print documents.
-    printing.enable = true;
-
-    # Enable the X11 windowing system.
-    xserver = {
-      enable = true;
-      videoDrivers = [ "amdgpu" ];
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-    };
-
-    # Enable SSH service
-    openssh = {
-      enable = true;
-    };
-  };
-
-  # -*- Enabled Zshell -*-
-  programs.zsh.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_IN";
