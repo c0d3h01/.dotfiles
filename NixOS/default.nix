@@ -1,12 +1,13 @@
 {
   imports = [
     ./c0d3h01
+    ./system
     ./hardware
     ./amd
     ./fonts
     ./networking
     ./gnome
-    ./modules
+    ./extras
     ./audio
     ./nixpkgs
   ];
