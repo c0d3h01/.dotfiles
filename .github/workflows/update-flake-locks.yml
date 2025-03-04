@@ -2,30 +2,35 @@ name: Autoupdate flake.lock
 
 on:
   schedule:
-    - cron: "0 6 * * *"
-
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
-  build:
+  update-flake:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: cachix/install-nix-action@v20
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
 
-      - run: nix flake update
+      - name: Update flake.lock
+        run: nix flake update
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: update flake locks
+          commit_message: "Automated flake.lock update"
           branch: master
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
-          commit_user_name: Flake Bot
-          commit_author: Flake Bot <actions@github.com>
+          commit_user_name: "Flake Bot"
+          commit_author: "Flake Bot <actions@github.com>"
           skip_dirty_check: false
-          skip_fetch: true
+          skip_fetch: false
+          skip_checkout: false
+          push_options: '--force'
