@@ -65,7 +65,7 @@
           inherit system specialArgs;
           modules = [
             # Host, user, modules configurations
-            ./NixOS
+            ./nixos/configuration.nix
 
             # Home Manager configuration
             home-manager.nixosModules.home-manager
@@ -74,7 +74,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = specialArgs;
-                users.c0d3h01 = import ./home/home.nix;
+                users.c0d3h01 = import ./home-manager/home.nix;
               };
             }
 

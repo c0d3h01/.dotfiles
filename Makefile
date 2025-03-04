@@ -16,9 +16,10 @@ test:
 
 # Update flake inputs
 update:
-	nix flake update
+	sudo nix flake update
 
 # Clean old generations (use with caution)
 clean:
+	sudo nix-store --gc
 	sudo nix-collect-garbage -d
 	home-manager expire-generations "-1 days"
