@@ -9,8 +9,8 @@
     ./pkgs
   ];
 
-    # Set your time zone.
-    time.timeZone = "Asia/Kolkata";
+  # Set your time zone.
+  time.timeZone = "Asia/Kolkata";
 
   # -*- Define a user account -*-
   users.users.c0d3h01 = {
