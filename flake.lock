@@ -159,22 +159,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1731763621,
-        "narHash": "sha256-ddcX4lQL0X05AYkrkV2LMFgGdRvgap7Ho8kgon3iWZk=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c69a9bffbecde46b4b939465422ddc59493d3e4d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -184,11 +168,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1741085792,
-        "narHash": "sha256-SFjSs7hUAOyJsEymxZVbiLzJPYQzP2lCRSwu9OFZ0OY=",
+        "lastModified": 1741099788,
+        "narHash": "sha256-ZDTcZmhz7glHFPCSR7cmyK63Ovm1tN90PsH7YwJWTRI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9c6c7fa873e8335eb2fd4d96f5724b5893cc47c6",
+        "rev": "c13f06ae97a5c40b170f7ab92251f90981b4df77",
         "type": "github"
       },
       "original": {
@@ -226,26 +210,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks",
-        "sops-nix": "sops-nix",
         "systems": "systems_2"
-      }
-    },
-    "sops-nix": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1741043164,
-        "narHash": "sha256-9lfmSZLz6eq9Ygr6cCmvQiiBEaPb54pUBcjvbEMPORc=",
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "rev": "3f2412536eeece783f0d0ad3861417f347219f4d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "type": "github"
       }
     },
     "systems": {
