@@ -1,4 +1,4 @@
-name: Bump flake.lock
+name: Autoupdate flake.lock
 
 on:
   schedule:
@@ -19,9 +19,9 @@ jobs:
 
       - run: nix flake update
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: c0d3h01/git-auto-commit-action@v4
         with:
-          commit_message: Bump flake.lock
+          commit_message: update flake locks
           branch: master
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
