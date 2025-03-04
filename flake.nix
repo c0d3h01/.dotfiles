@@ -24,9 +24,12 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Pre-commit hooks
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, nur, systems, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, nur, pre-commit-hooks, systems, ... }:
     let
       # Helper function to generate system configurations for each supported system
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
@@ -49,6 +52,7 @@
               config.allowUnfree = true;
             };
           })
+          #(import ./overlays/default.nix) 
         ];
       };
 
@@ -80,11 +84,6 @@
 
             # Adds the NUR overlay
             nur.modules.nixos.default
-            # NUR modules to import
-            nur.legacyPackages."${system}".repos.iopq.modules.xraya
-            ({ pkgs, ... }: {
-              environment.systemPackages = [ ];
-            })
           ];
         };
       };
@@ -98,10 +97,26 @@
               nixpkgs-fmt
               nil
               git
+              python3
+              nodejs
+              rustc
+              cargo
             ];
           };
         }
       );
+
+      # Pre-commit hooks for linting and formatting
+      checks = forEachSystem (system: {
+        pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixpkgs-fmt.enable = true;
+            statix.enable = true;
+            deadnix.enable = true;
+          };
+        };
+      });
 
       # Formatter configuration
       formatter = forEachSystem (system: (pkgsFor system).nixpkgs-fmt);
