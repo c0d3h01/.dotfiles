@@ -6,6 +6,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Python modules
+    python312Full
     python312Packages.pip
     python312Packages.django
     python312Packages.flask
