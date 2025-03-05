@@ -56,26 +56,13 @@
     cmake
     ninja
 
-    # -*- Terminal basic utilities -*-
+    # -*- Terminal misc utilities -*-
     android-tools
     appimage-run
     universal-android-debloater # uad-ng
     wine
-    tree
     ventoy
-    curl
-    wget
-    xclip
-    bat
-    tmux
-    fastfetch
-    inxi
-    glances
     shc
-    git
-    git-lfs
-    gh
-    gitui
   ];
 }
 
