@@ -1,74 +1,90 @@
 { config, pkgs, ... }:
 
+let
+  nordTheme = ''
+    foreground            #D8DEE9
+    background            #2E3440
+    selection_foreground  #000000
+    selection_background  #FFFACD
+    url_color             #0087BD
+    cursor                #81A1C1
+
+    # black
+    color0   #3B4252
+    color8   #4C566A
+
+    # red
+    color1   #BF616A
+    color9   #BF616A
+
+    # green
+    color2   #A3BE8C
+    color10  #A3BE8C
+
+    # yellow
+    color3   #EBCB8B
+    color11  #EBCB8B
+
+    # blue
+    color4  #81A1C1
+    color12 #81A1C1
+
+    # magenta
+    color5   #B48EAD
+    color13  #B48EAD
+
+    # cyan
+    color6   #88C0D0
+    color14  #8FBCBB
+
+    # white
+    color7   #E5E9F0
+    color15  #ECEFF4
+  '';
+in
 {
   programs.kitty = {
     enable = true;
     settings = {
-      font_family = "JetBrainsMono Nerd Font";
-      bold_font = "JetBrainsMono Nerd Font Bold";
-      italic_font = "JetBrainsMono Nerd Font Italic";
-      bold_italic_font = "JetBrainsMono Nerd Font Bold Italic";
-      font_size = 12;
+      italic_font = "auto";
+      bold_font = "auto";
+      bold_italic_font = "auto";
+      font_size = "13.0";
 
-      # Window settings
-      window_padding_width = 4;
-      hide_window_decorations = "yes";
-      confirm_os_window_close = 1;
-      enable_audio_bell = true;
+      foreground = "#c0b18b";
+      background = "#262626";
       background_opacity = "0.9";
-      background_blur = 7;
+      selection_foreground = "#2f2f2f";
+      selection_background = "#d75f5f";
+      cursor = "#8fee96";
+      cursor_shape = "block";
+      cursor_blink_interval = "0.5";
+      cursor_stop_blinking_after = "15.0";
+      scrollback_lines = "9000";
+      scrollback_pager = "less +G -R";
+      wheel_scroll_multiplier = "5.0";
+      click_interval = "0.5";
+      select_by_word_characters = ":@-./_~?&=%+#";
+      mouse_hide_wait = "0.0";
+      enabled_layouts = "*";
+      repaint_delay = "10";
+      input_delay = "3";
+      visual_bell_duration = "0.0";
+      enable_audio_bell = "no";
+      open_url_modifiers = "ctrl+shift";
+      open_url_with = "default";
+      term = "xterm-kitty";
+      window_border_width = "0";
+      window_margin_width = "15";
+      active_border_color = "#ffffff";
+      inactive_border_color = "#cccccc";
+      hide_window_decorations = "yes";
+      macos_option_as_alt = "no";
       remember_window_size = "yes";
+      confirm_os_window_close = "0";
       macos_titlebar_color = "background";
-
-      # Color scheme - One Dark
-      foreground = "#abb2bf";
-      background = "#282c34";
-      selection_foreground = "#282c34";
-      selection_background = "#979eab";
-      cursor = "#cccccc";
-
-      # Black
-      color0 = "#282c34";
-      color8 = "#545862";
-      # Red
-      color1 = "#e06c75";
-      color9 = "#e06c75";
-      # Green
-      color2 = "#98c379";
-      color10 = "#98c379";
-      # Yellow
-      color3 = "#e5c07b";
-      color11 = "#e5c07b";
-      # Blue
-      color4 = "#61afef";
-      color12 = "#61afef";
-      # Magenta
-      color5 = "#c678dd";
-      color13 = "#c678dd";
-      # Cyan
-      color6 = "#56b6c2";
-      color14 = "#56b6c2";
-      # White
-      color7 = "#abb2bf";
-      color15 = "#c8ccd4";
-
-      # Tab bar
-      tab_bar_edge = "bottom";
-      tab_bar_style = "powerline";
-      active_tab_foreground = "#282c34";
-      active_tab_background = "#61afef";
-      inactive_tab_foreground = "#abb2bf";
-      inactive_tab_background = "#353b45";
     };
-
-    keybindings = {
-      "ctrl+shift+c" = "copy_to_clipboard";
-      "ctrl+shift+v" = "paste_from_clipboard";
-      "ctrl+shift+up" = "increase_font_size";
-      "ctrl+shift+down" = "decrease_font_size";
-      "ctrl+shift+home" = "restore_font_size";
-    };
+    extraConfig = nordTheme;
   };
 }
-
 
