@@ -15,14 +15,12 @@
   # This value determines the Home Manager release that your configuration is
   home.stateVersion = "24.11";
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
   # Enable firefox coustom modules
   modules.firefox.enable = true;
 
-  # ".config/some-app/config".source = ./config/some-app/config;
-  home.file = { };
+  # home.file = {
+  #   ".config/zsh/.zshrc".source = ./modules/zsh/.zshrc;
+  # };
 
   # Core configuration for $home
   home.sessionVariables = {
@@ -32,6 +30,33 @@
     PAGER = "less";
     LESS = "-R";
   };
+
+  # Install home-manager pkgs
+  home.packages = with pkgs; [
+    home-manager
+    fastfetch
+    glances
+    tmux
+    xclip
+    curl
+    wget
+    eza
+    bat
+    inxi
+    fd
+    ripgrep
+    dust
+    procs
+    bottom
+    git
+    git-lfs
+    gh
+    gitui
+    nix-output-monitor
+    diff-so-fancy
+    nix-prefetch-github
+    tree
+  ];
 
   # XDG Base Directory specification
   xdg = {
