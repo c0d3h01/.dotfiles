@@ -1,0 +1,44 @@
+name: Update README with dotfiles root structure
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate tree structure
+        run: |
+          echo '<!-- BEGIN TREE -->' > README_TREE.md
+          echo '```' >> README_TREE.md
+          tree -L 3 --noreport >> README_TREE.md
+          echo '```' >> README_TREE.md
+
+      - name: Update README.md
+        run: |
+          awk '/<!-- BEGIN TREE -->/ {print; exit}' README.md > TEMP.md
+          cat README_TREE.md >> TEMP.md
+          mv TEMP.md README.md
+          rm README_TREE.md
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "update README structure"
+          branch: master
+          file_pattern: README.md
+          commit_user_name: "Readme Bot"
+          commit_author: "Readme Bot <actions@github.com>"
+          skip_dirty_check: false
+          skip_fetch: false
+          push_options: '--force'
