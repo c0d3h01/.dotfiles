@@ -24,6 +24,7 @@
     baobab
     gnome-console
     gnome-weather
+    gnome-text-editor
     gnome-connections
     gnome-contacts
     gnome-system-monitor
@@ -41,11 +42,10 @@
     pkgs.evolutionWithPlugins
     pkgs.rhythmbox
     pkgs.libreoffice
+    pkgs.micro
 
     # Gnome Extensions
     gnomeExtensions.user-themes
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.space-bar
   ];
 
   # Home Manager settings (for per-user configuration)
@@ -56,8 +56,6 @@
         disable-user-extensions = false;
         enabled-extensions = [
           "user-theme@gnome-shell-extensions.gcampax.github.com"
-          "dash-to-panel@jderose9.github.com"
-          "space-bar@luchrioh"
         ];
 
         #   favorite-apps = [
@@ -76,10 +74,6 @@
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
         enable-hot-corners = false;
-      };
-
-      "org/gnome/desktop/wm/preferences" = {
-        workspace-names = [ "Main" ];
       };
 
       "org/gnome/desktop/background" = {

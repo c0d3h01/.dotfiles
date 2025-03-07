@@ -3,9 +3,7 @@
 {
   imports = [
     ./flatpak.nix
-    ./gamemode.nix
     ./virtualization.nix
-    ./steam.nix
   ];
 
   # -*- Allow unfree softwares -*-
@@ -60,6 +58,7 @@
     ninja
 
     # -*- Misc utilities -*-
+    rPackages.CDatanet
     android-tools
     appimage-run
     universal-android-debloater # uad-ng

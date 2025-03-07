@@ -4,5 +4,6 @@
     ./docker.nix
     ./java.nix
     ./python.nix
+    # ./mongodb.nix
   ];
 }

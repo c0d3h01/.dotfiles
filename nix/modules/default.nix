@@ -5,7 +5,6 @@
     ./opengl.nix
     ./printing.nix
     ./systemd.nix
-    ./timesyncd.nix
     ./tlp.nix
   ];
 }
