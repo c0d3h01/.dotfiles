@@ -20,14 +20,11 @@
 │       └── terminal
 ├── image
 │   ├── gitjump.png
-│   ├── review.png
 │   └── wallpaper.png
 ├── nix
 │   ├── apps
 │   │   ├── default.nix
 │   │   ├── flatpak.nix
-│   │   ├── gamemode.nix
-│   │   ├── steam.nix
 │   │   └── virtualization.nix
 │   ├── c0d3h01
 │   │   ├── audio
@@ -40,6 +37,7 @@
 │   │   ├── default.nix
 │   │   ├── docker.nix
 │   │   ├── java.nix
+│   │   ├── mongodb.nix
 │   │   ├── python.nix
 │   │   └── rust.nix
 │   ├── modules
@@ -49,7 +47,6 @@
 │   │   ├── opengl.nix
 │   │   ├── printing.nix
 │   │   ├── systemd.nix
-│   │   ├── timesyncd.nix
 │   │   └── tlp.nix
 │   └── security
 │       ├── automount.nix
