@@ -2,12 +2,14 @@
 
 {
   # -*- AMD -*-
-  hardware.amdgpu.initrd.enable = true;
-  hardware.amdgpu.amdvlk.enable = true;
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
     rocmPackages.clr.icd
   ];
+
+  environment.variables = {
+    ROC_ENABLE_PRE_VEGA = "1";
+  };
 
   fileSystems."/home/c0d3h01/Desktop/hdd" =
     {

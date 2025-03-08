@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Enables wireless support via wpa_supplicant (uncomment if needed)
@@ -9,21 +9,15 @@
 
   systemd.network.wait-online.enable = false;
   # -*- Network manager configurations -*-
-  networking.networkmanager = {
-    enable = true;
-    settings = {
-      connection = {
-        "wifi.powersave" = 2;
-      };
-    };
-  };
+  networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = lib.mkForce false;
+  # networking.networkmanager.settings.connection."wifi.powersave" = lib.mkForce false;
 
   # -*- DNS -*-
   # Use systemd-resolved
   services.resolved.enable = true;
   # Disable NetworkManager's internal DNS resolution
   networking.networkmanager.dns = lib.mkForce "none";
-  # Configure DNS servers manually (this example uses Cloudflare and Google DNS)
   # IPv6 DNS servers can be used here as well.
   networking.nameservers = [
     "1.1.1.1"

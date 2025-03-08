@@ -100,6 +100,8 @@
     ];
 
     envExtra = ''
+      export PATH="$HOME/.npm-global/bin:$PATH"
+      export NVM_DIR="$HOME/.config/nvm"
       export EDITOR="nvim"
       export VISUAL="nvim"
       export MANPAGER="nvim +Man!"
@@ -116,6 +118,8 @@
     '';
 
     initExtra = ''
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
       # Enable Powerline glyphs
       export POWERLINE=true
       

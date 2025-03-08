@@ -8,6 +8,5 @@
   };
 
   # -*-[ Kernel ]-*-
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  boot.consoleLogLevel = 0;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }

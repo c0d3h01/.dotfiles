@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./modules
@@ -50,6 +50,15 @@
     diff-so-fancy
     nix-prefetch-github
     tree
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    lua-language-server
+    rust-analyzer
+    nil
+    appimage-run
+    asar
+    fuse
+    dos2unix
   ];
 
   # XDG Base Directory specification
@@ -67,6 +76,8 @@
       videos = "$HOME/Videos";
       templates = "$HOME/Templates";
       publicShare = "$HOME/Public";
+      #NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+      #PATH = "$HOME/.npm-global/bin:$PATH";
     };
   };
 }

@@ -23,10 +23,14 @@
   programs.nix-ld.enable = true;
 
   # flatpak Apps
-  # services.flatpak.enable = true;
-  # xdg.portal.enable = true;
+  #services.flatpak.enable = true;
+  #xdg.portal.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # Notion fix patch
+    (pkgs.callPackage ./notion-app-enhanced { })
+    notion-app-enhanced # Notion Desktop
+
     # -*- Desktop GUI Apps -*-
     zoom-us
     slack
@@ -56,25 +60,22 @@
     metasploit # msfconsole 
     nmap
     yarn
-    nodejs
     clang
     gnumake
     cmake
     ninja
+    glib
+    glfw
+    glew
+    glm
 
     # -*- Misc utilities -*-
-    rPackages.CDatanet
     android-tools
     appimage-run
     universal-android-debloater # uad-ng
     wine
     ventoy
     shc
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    lua-language-server
-    rust-analyzer
-    nil
   ];
 }
 

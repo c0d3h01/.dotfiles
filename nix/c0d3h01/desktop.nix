@@ -3,6 +3,8 @@
 {
   # Enable X server and GNOME
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.xkb.layout = "us";
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -57,6 +59,7 @@
         disable-user-extensions = false;
         enabled-extensions = [
           "user-theme@gnome-shell-extensions.gcampax.github.com"
+          "gsconnect@gnome-shell-extension-gsconnect.github.com"
         ];
 
         #   favorite-apps = [

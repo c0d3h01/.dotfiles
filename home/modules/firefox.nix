@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 with lib;
 let
   cfg = config.modules.firefox;
@@ -76,7 +76,6 @@ in
           "browser.uidensity" = 1;
           "media.autoplay.enabled" = false;
           "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
-
           "privacy.firstparty.isolate" = false;
           "network.http.sendRefererHeader" = 0;
         };

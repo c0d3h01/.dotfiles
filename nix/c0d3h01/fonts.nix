@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   fonts = {
@@ -10,9 +10,9 @@
 
     fontconfig = {
       defaultFonts = {
-        serif = [ "DejaVu Serif" ];
-        sansSerif = [ "DejaVu Sans" ];
-        monospace = [ "Hack" ];
+        serif = lib.mkForce [ "DejaVu Serif" ];
+        sansSerif = lib.mkForce [ "DejaVu Sans" ];
+        monospace = lib.mkForce [ "Hack" ];
       };
     };
   };

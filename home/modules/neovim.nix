@@ -145,7 +145,7 @@
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       -- Language servers
-      require('lspconfig').tsserver.setup({ capabilities = capabilities })
+      require('lspconfig').ts_ls.setup({ capabilities = capabilities })
       require('lspconfig').rust_analyzer.setup({ capabilities = capabilities })
       require('lspconfig').nil_ls.setup({ capabilities = capabilities })
 

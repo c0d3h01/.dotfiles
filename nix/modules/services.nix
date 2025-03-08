@@ -8,30 +8,19 @@
   # -*- GPG -*-
   # Some programs need SUID wrappers, can be configured further or are
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  # -*- X Server System Services -*-
-  services = {
-    xserver = {
-      # libinput.enable = true; # Enable touchpad support (enabled default in most desktopManager).
-      enable = true; # X11 Window System Configuration
-      videoDrivers = [ "amdgpu" ];
-      xkb.layout = "us";
-    };
-  };
+  programs.gnupg.agent.enable = true;
+  programs.gnupg.agent.enableSSHSupport = true;
 
   # -*- SSH -*-
   services.sshd.enable = true;
   # Enable incoming ssh
-  services.openssh = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
+  services.openssh.enable = true;
+  services.openssh.openFirewall = true;
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.settings.PermitRootLogin = "no";
+
+  # -*- Systemd logs -*-
+  services.journald.extraConfig = "SystemMaxUse=100M\nSystemMaxFiles=5";
+  services.journald.rateLimitBurst = 1000;
+  services.journald.rateLimitInterval = "30s";
 }
