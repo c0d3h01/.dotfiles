@@ -54,10 +54,15 @@
       nixosConfigurations.NixOS = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          # System configurations
+          # -*-[ System configurations, modules ]-*-
           ./nix
 
-          # Home Manager integration
+          ({ config, ... }: {
+            system.stateVersion = "24.11";
+            networking.hostName = "NixOS";
+          })
+
+          # -*-[ Home Manager integration, modules ]-*-
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -67,7 +72,7 @@
               users.c0d3h01 = import ./home/home.nix;
             };
           }
-          # 
+
           # NUR overlay
           nur.modules.nixos.default
         ];
@@ -78,15 +83,10 @@
         packages = with pkgs; [
           nixpkgs-fmt
           nil
-          git
-          python3
-          nodejs
-          rustc
-          cargo
         ];
       };
 
-      # Formatter
+      # NixFormatter
       formatter.${system} = pkgs.nixpkgs-fmt;
     };
 }
