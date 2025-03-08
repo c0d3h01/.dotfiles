@@ -1,9 +1,8 @@
 {
   imports = [
-    ./rust.nix
     ./docker.nix
     ./java.nix
     ./python.nix
-    # ./mongodb.nix
+    ./rust.nix
   ];
 }

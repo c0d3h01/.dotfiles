@@ -13,12 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hardware configuration
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-
-    # Systems definitions
-    systems.url = "github:nix-systems/default";
-
     # NUR (Nix User Repository)
     nur = {
       url = "github:nix-community/NUR";
@@ -29,96 +23,70 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, nur, pre-commit-hooks, systems, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nur, pre-commit-hooks, ... }:
     let
-      # Helper function to generate system configurations for each supported system
-      forEachSystem = nixpkgs.lib.genAttrs (import systems);
-
-      # System specific configuration
+      # System architecture
       system = "x86_64-linux";
 
-      # Generate specialized pkgs with needed configuration
-      pkgsFor = system: import nixpkgs {
+      # Generate pkgs with custom configurations
+      pkgs = import nixpkgs {
         inherit system;
-        config = {
-          allowUnfree = true;
-          permittedInsecurePackages = [ ];
-        };
+        config.allowUnfree = true;
         overlays = [
           (final: prev: {
-            # Package overrides can be added here
             stable = import nixpkgs-stable {
               inherit system;
               config.allowUnfree = true;
             };
           })
-          #(import ./overlays/default.nix) 
         ];
       };
 
       lib = nixpkgs.lib;
 
-      # Shared special arguments to pass to all modules
+      # Shared arguments for modules
       specialArgs = {
-        inherit inputs system;
+        inherit system;
+        inputs = self.inputs;
       };
     in
     {
-      nixosConfigurations = {
-        NixOS = lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [
-            # Host, user, modules configurations
-            ./nix
+      nixosConfigurations.NixOS = lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          # System configurations
+          ./nix
 
-            # Home Manager configuration
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = specialArgs;
-                users.c0d3h01 = import ./home/home.nix;
-              };
-            }
-
-            # Adds the NUR overlay
-            nur.modules.nixos.default
-          ];
-        };
+          # Home Manager integration
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = specialArgs;
+              users.c0d3h01 = import ./home/home.nix;
+            };
+          }
+          # 
+          # NUR overlay
+          nur.modules.nixos.default
+        ];
       };
 
-      # Development shells for this flake
-      devShells = forEachSystem (system:
-        let pkgs = pkgsFor system; in
-        {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              nixpkgs-fmt
-              nil
-              git
-              python3
-              nodejs
-              rustc
-              cargo
-            ];
-          };
-        }
-      );
+      # DevShell
+      devShells.${system}.default = pkgs.mkShell {
+        packages = with pkgs; [
+          nixpkgs-fmt
+          nil
+          git
+          python3
+          nodejs
+          rustc
+          cargo
+        ];
+      };
 
-      # Pre-commit hooks for linting and formatting
-      checks = forEachSystem (system: {
-        pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            nixpkgs-fmt.enable = true;
-            statix.enable = true;
-            deadnix.enable = true;
-          };
-        };
-      });
-
-      # Formatter configuration
-      formatter = forEachSystem (system: (pkgsFor system).nixpkgs-fmt);
+      # Formatter
+      formatter.${system} = pkgs.nixpkgs-fmt;
     };
 }

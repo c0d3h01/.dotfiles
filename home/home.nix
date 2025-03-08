@@ -1,12 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-    ./modules/git
-    ./modules/shell
-    ./modules/editor
-    ./modules/terminal
-    ./modules/firefox
-    ./modules/gtk
+    ./modules
   ];
 
   # Home Manager needs a bit of information about you and the paths it should manage.

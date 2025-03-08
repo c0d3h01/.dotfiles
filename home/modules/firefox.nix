@@ -65,7 +65,7 @@ in
           # Extra
           "identity.fxaccounts.enabled" = true;
           "browser.search.suggest.enabled" = false;
-          "browser.urlbar.shortcuts.bookmarks" = false;
+          "browser.urlbar.shortcuts.bookmarks" = true;
           "browser.urlbar.shortcuts.history" = false;
           "browser.urlbar.shortcuts.tabs" = false;
           "browser.urlbar.suggest.bookmark" = false;

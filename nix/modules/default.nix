@@ -1,10 +1,8 @@
 {
   imports = [
+    ./boot.nix
     ./hardware.nix
-    ./kernel.nix
-    ./opengl.nix
-    ./printing.nix
+    ./services.nix
     ./systemd.nix
-    ./tlp.nix
   ];
 }

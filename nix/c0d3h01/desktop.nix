@@ -46,6 +46,7 @@
 
     # Gnome Extensions
     gnomeExtensions.user-themes
+    gnomeExtensions.gsconnect
   ];
 
   # Home Manager settings (for per-user configuration)

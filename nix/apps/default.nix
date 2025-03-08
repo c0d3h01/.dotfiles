@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ./flatpak.nix
+    ./printing.nix
+    ./tlp.nix
     ./virtualization.nix
   ];
 
@@ -20,6 +21,10 @@
 
   # Enables nix-ld to run dynamically linked binaries outside the Nix store
   programs.nix-ld.enable = true;
+
+  # flatpak Apps
+  # services.flatpak.enable = true;
+  # xdg.portal.enable = true;
 
   environment.systemPackages = with pkgs; [
     # -*- Desktop GUI Apps -*-
@@ -65,6 +70,11 @@
     wine
     ventoy
     shc
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    lua-language-server
+    rust-analyzer
+    nil
   ];
 }
 

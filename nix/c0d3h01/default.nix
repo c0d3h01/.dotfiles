@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ./audio
-    ./desktop
-    ./fonts
-    ./networking
+    ./audio.nix
+    ./desktop.nix
+    ./fonts.nix
+    ./networking.nix
   ];
 
   # Set your time zone.

@@ -2,6 +2,14 @@
 
 {
   # -*-[ Vitrtual Boxes settings ]-*-
-  environment.systemPackages = with pkgs; [ qemu ];
-  # virtualisation.waydroid.enable = true; # Like Android with lineageOS system
+  environment.systemPackages = with pkgs; [ qemu virt-manager ];
+  virtualisation.libvirtd = {
+    allowedBridges = [
+      "nm-bridge"
+      "virbr0"
+    ];
+    enable = true;
+    qemu.runAsRoot = false;
+  };
+  # virtualisation.waydroid.enable = true; # Android with lineageOS
 }
