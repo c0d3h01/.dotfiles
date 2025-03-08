@@ -25,6 +25,7 @@
 ├── nix
 │   ├── apps
 │   │   ├── default.nix
+│   │   ├── notion-app-enhanced
 │   │   ├── printing.nix
 │   │   ├── tlp.nix
 │   │   └── virtualization.nix
@@ -41,13 +42,12 @@
 │   │   ├── java.nix
 │   │   ├── python.nix
 │   │   └── rust.nix
-│   ├── hardware-configuration.nix
+│   ├── hardware.nix
 │   └── modules
 │       ├── boot.nix
 │       ├── default.nix
 │       ├── hardware.nix
-│       ├── services.nix
-│       └── systemd.nix
+│       └── services.nix
 └── scripts
     ├── bootstrap.sh
     └── update.sh
