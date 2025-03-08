@@ -12,49 +12,42 @@
 ├── home
 │   ├── home.nix
 │   └── modules
-│       ├── editor
-│       ├── firefox
-│       ├── git
-│       ├── gtk
-│       ├── shell
-│       └── terminal
+│       ├── default.nix
+│       ├── firefox.nix
+│       ├── git.nix
+│       ├── gtk.nix
+│       ├── kitty.nix
+│       ├── neovim.nix
+│       └── zsh.nix
 ├── image
 │   ├── gitjump.png
 │   └── wallpaper.png
 ├── nix
 │   ├── apps
 │   │   ├── default.nix
-│   │   ├── flatpak.nix
+│   │   ├── printing.nix
+│   │   ├── tlp.nix
 │   │   └── virtualization.nix
 │   ├── c0d3h01
-│   │   ├── audio
+│   │   ├── audio.nix
 │   │   ├── default.nix
-│   │   ├── desktop
-│   │   ├── fonts
-│   │   └── networking
+│   │   ├── desktop.nix
+│   │   ├── fonts.nix
+│   │   └── networking.nix
 │   ├── default.nix
 │   ├── dev
 │   │   ├── default.nix
 │   │   ├── docker.nix
 │   │   ├── java.nix
-│   │   ├── mongodb.nix
 │   │   ├── python.nix
 │   │   └── rust.nix
-│   ├── modules
-│   │   ├── default.nix
-│   │   ├── hardware.nix
-│   │   ├── kernel.nix
-│   │   ├── opengl.nix
-│   │   ├── printing.nix
-│   │   ├── systemd.nix
-│   │   └── tlp.nix
-│   └── security
-│       ├── automount.nix
+│   ├── hardware-configuration.nix
+│   └── modules
+│       ├── boot.nix
 │       ├── default.nix
-│       ├── dns.nix
-│       ├── firewall.nix
-│       ├── gpg.nix
-│       └── sshd.nix
+│       ├── hardware.nix
+│       ├── services.nix
+│       └── systemd.nix
 └── scripts
     ├── bootstrap.sh
     └── update.sh
